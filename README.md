@@ -18,16 +18,15 @@ on:
 
 # needed permissions
 permissions:
-  contents: write
-  packages: write
+  contents: read
+  packages: read
 
 # This is most important part
 # This uses release workflow
 jobs:
   release:
     uses: Vronst/Vronst/lint-check/.github/workflows/lint.yaml@1.0.0
+    # (optional)
     with:
       python-version: '3.13'
-    secrets:
-      TOKEN: ${{ secrets.PRO_TOKEN }}
 ```
