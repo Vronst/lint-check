@@ -4,7 +4,7 @@ on:
   workflow_call:
     inputs:
       python-version:
-        description: "Python version to run flake8"
+        description: "Python version to run ruff"
         default: "3.13"
         type: string
         required: false
@@ -21,7 +21,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: ${{ inputs.python-version}}  
+          python-version: ${{ inputs.python-version }}  
 
       - name: Install dependencies
         run: |
@@ -29,8 +29,11 @@ jobs:
           pip install uv
           uv add ruff
           
-      - name: Run ruff check and format
+      - name: Run ruff check
         run: |
-          uv run ruff check --fix . --output-format=github
-          uv run ruff format .
+          uv run ruff check . --output-format=github
+
+      - name: Run ruff format check
+        run: |
+          uv run ruff format --check .
 
