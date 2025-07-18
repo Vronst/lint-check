@@ -1,3 +1,13 @@
+# Reusable Workflows
+
+This repository contains reusable GitHub Actions workflows for consistent automation across multiple projects.
+This workflow check formating/linting for python code with ruff. (It does not edit code)
+
+## 🔁 Reusable Release Workflow
+
+### Usage
+
+```yaml
 # Exapmle job
 name: test
 
@@ -20,3 +30,4 @@ jobs:
       python-version: '3.13'
     secrets:
       TOKEN: ${{ secrets.PRO_TOKEN }}
+```
